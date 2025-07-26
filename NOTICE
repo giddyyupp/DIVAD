@@ -1,0 +1,46 @@
+NOTICE
+======
+
+VLMDiff
+Copyright © 2024 Samet Hicsonmez
+University of Luxembourg
+
+This software is licensed under the Apache License, Version 2.0.
+See the LICENSE file for details.
+
+-------------------------------------------------------------------------------
+
+THIRD-PARTY COMPONENTS AND ATTRIBUTIONS
+----------------------------------------
+
+This project makes use of third-party libraries, each subject to its respective license:
+
+- PyTorch (2.1.0) - BSD-3 License
+  Source: https://pytorch.org/
+
+- Torchvision (0.16.0) - BSD-3 License
+  Source: https://github.com/pytorch/vision
+
+- Pillow (9.4.0) - MIT CMU License
+  Source: https://python-pillow.org/
+
+- Scikit-Learn (1.2.2) - BSD (new-BSD) License
+  Source: https://scikit-learn.org/stable/
+
+- Matplotlib (3.7.1) - Python Software Foundation (PSF) License
+  Source: https://matplotlib.org/stable/
+
+Each of these libraries retains its own license and ownership.
+Please refer to the respective repositories for full details.
+
+-------------------------------------------------------------------------------
+
+LEGAL NOTICES
+-------------
+
+This software and its documentation are provided "as is" without warranty of any kind.
+The University of Luxembourg and Romain HERMARY disclaim all warranties, including
+implied warranties of merchantability and fitness for a particular purpose.
+
+For details on permitted usage, please refer to the Apache License, Version 2.0,
+included in this repository.
