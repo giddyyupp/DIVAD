@@ -45,7 +45,7 @@ This project makes use of third-party libraries, each subject to its respective 
 - Scikit-learn (1.2.2) - BSD 3-Clause License
   Source: https://github.com/scikit-learn/scikit-learn 
 
-- Scipy (1.9.1) - BSD 3-Clause License
+- Scipy (1.9.1) - Copyright (c) 2001-2002 Enthought, Inc. 2003, SciPy Developers. All rights reserved.
   Source: https://github.com/scipy/scipy 
 
 - Scikit-image (0.20.0) - BSD 3-Clause License
