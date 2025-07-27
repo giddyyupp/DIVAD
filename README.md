@@ -62,6 +62,7 @@ git clone https://gitlab.com/uniluxembourg/snt/cvi2/open/space/divad
 cd divad
 
 conda create -n divad python=3.10
+conda activate divad
 conda install pytorch==2.1.0 torchvision==0.16.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install -r requirements.txt
 ```

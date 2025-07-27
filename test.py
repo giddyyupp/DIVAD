@@ -202,9 +202,9 @@ parser.add_argument("--data_path", default='/mnt/isilon/shicsonmez/ad/data/visa_
 parser.add_argument('--use_dino', action='store_false', help='use DINO as segmenter or not!')
 parser.add_argument("--dino_version", default='v1s8', help="choices are v1s8|v1s16|v1b8|v1b16|v2s14|v1r50")
 parser.add_argument('--save_visuals', action='store_false', help='save predictions visuals such as heatmaps, anomaly maps etc.')
-parser.add_argument("--exp_name", default='results_test/{}_ddim_inversion_results_sd{}_ss{}_is{}_nis{}_dinov1_vits8_img_size256_sigma5_no_fg_mask', 
+parser.add_argument("--exp_name", default='./results_test/{}_ddim_inversion_results_sd{}_ss{}_is{}_nis{}_dinov1_vits8_img_size256_sigma5_no_fg_mask', 
                     help='npz files will be saved inside this folder. make it unique please!')
-parser.add_argument("--input_dir", default='/mnt/isilon/shicsonmez/ad/repos/Semantic-SAM/{}_ddim_inversion_results_sd{}_ss{}_is{}_nis{}',
+parser.add_argument("--input_dir", default='/mnt/isilon/shicsonmez/ad/repos/Semantic-SAM/{}_ddim_inversion_results_sd{}_ss{}_is{}_nis{}_target_prompt_remove_whites',
                      help='read the ddim inversion results here')
 parser.add_argument("--object_name", default='', help='which object to test')
 parser.add_argument("--mask_dir", default='/mnt/isilon/shicsonmez/ad/repos/CutLER/{}_cutler_conf_010', 
@@ -236,7 +236,6 @@ fg_mask_dir = args.mask_dir
 input_dir = input_dir.format(data_set, sd_version, start_step, inference_steps, num_inference_steps)
 exp_name = exp_name.format(data_set, sd_version, start_step, inference_steps, num_inference_steps)
 fg_mask_dir = fg_mask_dir.format(data_set)
-fg_mask_dir = ""
 
 use_dino = args.use_dino
 run_count = 1  # for batch run put a bigger number like 20

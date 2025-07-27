@@ -180,8 +180,8 @@ else:
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 
 # create save folder
-save_dir = f'../{dataset}_ddim_inversion_results_sd{sd_version}_ss{start_step}_is{inference_steps}_nis{num_inference_steps}'
-os.makedirs(f"./{save_dir}", exist_ok=True)
+save_dir = f'./{dataset}_ddim_inversion_results_sd{sd_version}_ss{start_step}_is{inference_steps}_nis{num_inference_steps}'
+os.makedirs(save_dir, exist_ok=True)
 
 all_objects = os.listdir(data_dir)
 
