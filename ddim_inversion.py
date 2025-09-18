@@ -157,7 +157,7 @@ parser.add_argument("--nis", default=50, type=int, help='num_inference_steps')
 parser.add_argument("--inf_step", default=100, type=int, help='inference_steps')
 parser.add_argument("--ss", default=40, type=int, help='start_step')
 parser.add_argument("--sd_version", default="21", type=str, help='stable diff version, 15 or 21')
-parser.add_argument('--save_inverted_image', action='store_true', help='save the inverted image')
+parser.add_argument('--save_inverted_image', action='store_true', help='save the inverted image.')
 
 args = parser.parse_args()
 
@@ -184,6 +184,7 @@ save_dir = f'./{dataset}_ddim_inversion_results_sd{sd_version}_ss{start_step}_is
 os.makedirs(save_dir, exist_ok=True)
 
 all_objects = os.listdir(data_dir)
+cfg = True
 
 # MVTEC and VISA dataset loops.
 for cl in all_objects:
@@ -191,6 +192,8 @@ for cl in all_objects:
         continue
     os.makedirs(f"{save_dir}/{cl}/", exist_ok=True)
     input_image_prompt = f"An image of a {cl}"
+    # input_image_prompt = f"An image of a"
+    # input_image_prompt = f""
     subfolders = os.listdir(os.path.join(data_dir, cl, 'test'))
     for sf in subfolders:
         test_ims = os.listdir(os.path.join(data_dir, cl, 'test', sf))
@@ -206,7 +209,7 @@ for cl in all_objects:
             with torch.no_grad():
                 latent = pipe.vae.encode(tfms.functional.to_tensor(input_image).unsqueeze(0).to(device) * 2 - 1)
             l = 0.18215 * latent.latent_dist.sample()
-            inverted_latents = invert(l, input_image_prompt, num_inference_steps=num_inference_steps)
+            inverted_latents = invert(l, input_image_prompt, num_inference_steps=num_inference_steps, do_classifier_free_guidance=cfg)
             inverted_latents.shape
 
             # Decode the final inverted latents

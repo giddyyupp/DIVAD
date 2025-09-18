@@ -202,40 +202,22 @@ parser.add_argument("--data_path", default='/mnt/isilon/shicsonmez/ad/data/visa_
 parser.add_argument('--use_dino', action='store_false', help='use DINO as segmenter or not!')
 parser.add_argument("--dino_version", default='v1s8', help="choices are v1s8|v1s16|v1b8|v1b16|v2s14|v1r50")
 parser.add_argument('--save_visuals', action='store_false', help='save predictions visuals such as heatmaps, anomaly maps etc.')
-parser.add_argument("--exp_name", default='./results_test/{}_ddim_inversion_results_sd{}_ss{}_is{}_nis{}_dinov1_vits8_img_size256_sigma5_no_fg_mask', 
+parser.add_argument("--res_dir", default='', 
                     help='npz files will be saved inside this folder. make it unique please!')
-parser.add_argument("--input_dir", default='/mnt/isilon/shicsonmez/ad/repos/Semantic-SAM/{}_ddim_inversion_results_sd{}_ss{}_is{}_nis{}_target_prompt_remove_whites',
+parser.add_argument("--input_dir", default='',
                      help='read the ddim inversion results here')
-parser.add_argument("--object_name", default='', help='which object to test')
-parser.add_argument("--mask_dir", default='/mnt/isilon/shicsonmez/ad/repos/CutLER/{}_cutler_conf_010', 
+parser.add_argument("--mask_dir", default='', 
                     help='read the detected foreground masks here.')
-
-parser.add_argument("--nis", default=50, type=int, help='num_inference_steps')
-parser.add_argument("--inf_step", default=100, type=int, help='inference_steps')
-parser.add_argument("--ss", default=40, type=int, help='start_step')
-parser.add_argument("--sd_version", default="21", type=str, help='stable diff version, 15 or 21')
 
 args = parser.parse_args()
 
-# DDIM params
-num_inference_steps = args.nis
-inference_steps = args.inf_step
-# The reason we want to be able to specify start step
-start_step = args.ss
-sd_version = args.sd_version
-
 # Configs
 data_set = args.data_set
-exp_name = args.exp_name
+exp_name = args.res_dir
 data_path = args.data_path
-object_name = args.object_name
 save_visuals = args.save_visuals
 input_dir = args.input_dir
 fg_mask_dir = args.mask_dir
-
-input_dir = input_dir.format(data_set, sd_version, start_step, inference_steps, num_inference_steps)
-exp_name = exp_name.format(data_set, sd_version, start_step, inference_steps, num_inference_steps)
-fg_mask_dir = fg_mask_dir.format(data_set)
 
 use_dino = args.use_dino
 run_count = 1  # for batch run put a bigger number like 20
@@ -315,6 +297,8 @@ for ind, object_name in enumerate(all_objects):
         # run the test for subset images
         for i, im_name in tqdm(enumerate(test_ims)):
 
+            print(os.path.join(inter_path, 'test', sf, im_name))
+
             input_img = Image.open(os.path.join(inter_path, 'test', sf, im_name)).convert('RGB')
             output_img = Image.open(os.path.join(input_dir, object_name, sf, im_name + "_sampled.png")).convert('RGB')
             if normal_set:
@@ -345,9 +329,9 @@ for ind, object_name in enumerate(all_objects):
             if data_set == 'mvtec' and object_name in ['carpet', 'leather', 'wood', 'tile', 'zipper']:
                 fg_mask = None
             
-            input_img = transform(input_img)
-            mask = target_transform(mask)
-            output_img = transform(output_img)
+            input_img = transform(input_img).unsqueeze(0)
+            mask = target_transform(mask).unsqueeze(0)
+            output_img = transform(output_img).unsqueeze(0)
 
             pred = run_amap_extraction(input_img, output_img, sf+'_'+im_name, exp_name, object_name, dino_version, use_dino, save_visuals, fg_mask)
             pred_2d = pred.squeeze_(0).squeeze_(0)

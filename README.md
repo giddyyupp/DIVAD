@@ -101,13 +101,13 @@ Download and organize the dataset as follows (e.g., MVTec-AD):
 ### 3. Run the Inversion
 
 ```bash
-python ddim_iversion.py --data_set mvtec --data_path /path/to/data/mvtec_anomaly_detection --save_inverted_image --nis 50 --inf_step 100 -ss 40 --sd_version 21
+python ddim_inversion.py --data_set mvtec --data_path /path/to/data/mvtec_anomaly_detection --save_inverted_image --nis 50 --inf_step 100 --ss 40 --sd_version 21
 ```
 
 ### 4. Evaluate the Performance
 
 ```bash
-python test.py --data_set mvtec --data_path /path/to/data/mvtec_anomaly_detection --use_dino --dino_version v1s8 --save_visuals --mask_dir /path/to/cutler_masks --nis 50 --inf_step 100 -ss 40 --sd_version 21
+python test.py --data_set mvtec --data_path /path/to/data/mvtec_anomaly_detection --use_dino --dino_version v1s8 --save_visuals --mask_dir /path/to/cutler_masks_mvtec --res_dir /path/to/save/results --input_dir /path/to/ddim_results
 ```
 
 ---
