@@ -104,7 +104,21 @@ Download and organize the dataset as follows (e.g., MVTec-AD):
 python ddim_inversion.py --data_set mvtec --data_path /path/to/data/mvtec_anomaly_detection --save_inverted_image --nis 50 --inf_step 100 --ss 40 --sd_version 21
 ```
 
+---
+
 ### 4. Evaluate the Performance
+
+Optionally extract foreground masks from CutLER for the test images:
+
+- First download and setup [CutLER](https://github.com/facebookresearch/CutLER) repository following official instructions.
+- Copy cutler/demo_batch_mvtec_visa.py to the CutLER/cutler/demo folder.
+- Run below command:
+
+```bash
+python demo_batch_mvtec_visa.py --opts "MODEL.WEIGHTS" "../cutler_cascade_final.pth"
+```
+
+Run the inference and metric calculation:
 
 ```bash
 python test.py --data_set mvtec --data_path /path/to/data/mvtec_anomaly_detection --use_dino --dino_version v1s8 --save_visuals --mask_dir /path/to/cutler_masks_mvtec --res_dir /path/to/save/results --input_dir /path/to/ddim_results
@@ -122,7 +136,6 @@ python test.py --data_set mvtec --data_path /path/to/data/mvtec_anomaly_detectio
 | BTAD      | 79.8 | 68.4 | 29.1 | 13.1 | 19.1      |
 
 ---
-
 
 
 ## 📜 Citation
