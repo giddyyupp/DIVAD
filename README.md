@@ -8,7 +8,7 @@
 
 [<sup>#</sup>Interdisciplinary Centre for Security, Reliability, and Trust (SnT), University of Luxembourg](https://www.uni.lu/snt-en/research-groups/cvi2/), 
 
-[![arXiv](https://img.shields.io/badge/arXiv-PDF-red)](link_to_arxiv) 
+[![arXiv](https://img.shields.io/badge/arXiv-PDF-red)]([link_to_arxiv](https://arxiv.org/abs/2601.08022)) 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 
@@ -130,11 +130,14 @@ python test.py --data_set mvtec --data_path /path/to/data/mvtec_anomaly_detectio
 If you find this work useful, please cite:
 
 ```bibtex
-@inproceedings{your2025paper,
-  title={Your Paper Title},
-  author={Your, Name and Coauthor, Name},
-  booktitle={Proceedings of Conference},
-  year={2025}
+@misc{hicsonmez2026training,
+      title={Training Free Zero-Shot Visual Anomaly Localization via Diffusion Inversion}, 
+      author={Samet Hicsonmez and Abd El Rahman Shabayek and Djamila Aouada},
+      year={2026},
+      eprint={2601.08022},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2601.08022}, 
 }
 ```
 
