@@ -8,7 +8,7 @@
 
 [<sup>#</sup>Interdisciplinary Centre for Security, Reliability, and Trust (SnT), University of Luxembourg](https://www.uni.lu/snt-en/research-groups/cvi2/), 
 
-[![arXiv](https://img.shields.io/badge/arXiv-PDF-red)]([link_to_arxiv](https://arxiv.org/abs/2601.08022)) 
+[![arXiv](https://img.shields.io/badge/arXiv-PDF-red)](https://arxiv.org/abs/2601.08022)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 
