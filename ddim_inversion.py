@@ -152,7 +152,7 @@ def invert(
 
 parser = argparse.ArgumentParser(description="DDIM Inversion for AD")
 parser.add_argument("--data_set", default='visa', help="choices are btad|mpdd|mvtec|visa")
-parser.add_argument("--data_path", default='/mnt/isilon/shicsonmez/ad/data/visa_dataset_processed')
+parser.add_argument("--data_path", default='/path/to/visa_dataset_processed')
 parser.add_argument("--nis", default=50, type=int, help='num_inference_steps')
 parser.add_argument("--inf_step", default=100, type=int, help='inference_steps')
 parser.add_argument("--ss", default=40, type=int, help='start_step')
@@ -171,9 +171,9 @@ dataset = args.data_set
 data_dir = args.data_path
 
 if sd_version == '15':
-    pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5").to(device)
+    pipe = StableDiffusionPipeline.from_pretrained("stable-diffusion-v1-5/stable-diffusion-v1-5").to(device)
 elif sd_version == '21':
-    pipe = StableDiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2-1-base").to(device)
+    pipe = StableDiffusionPipeline.from_pretrained("sd2-community/stable-diffusion-2-1").to(device)
 else:
     raise Exception("Not supported SD version!")
 
